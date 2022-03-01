@@ -21,13 +21,12 @@ public:
             for(int i = 0; i < size/2; i++) {
                 TreeNode* n1 = qu.front(); qu.pop();
                 TreeNode* n2 = qu.front(); qu.pop();
+                if(n1 == NULL && n2 == NULL)
+                    continue;
                 if(n1 == NULL || n2 == NULL) {
-                    if(n1 != n2) 
-                        return 0;
-                    else 
-                        continue;
+                    return 0;
                 }
-                else if(n1->val != n2->val)
+                if(n1->val != n2->val)
                     return 0;
                 qu.push(n1->left);
                 qu.push(n2->left);
