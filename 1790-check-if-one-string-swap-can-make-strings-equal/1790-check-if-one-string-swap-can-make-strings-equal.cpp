@@ -17,7 +17,9 @@ public:
         for(int i = 0; i < s1.length(); i++) {
             if(s1[i] != s2[i])
                 diff++;
+            if(diff > 2)
+                return 0;
         }
-        return diff == 2;
+        return 1;
     }
 };
