@@ -9,7 +9,6 @@ public:
                     res = i;
                     dis = k;
                 }
-
             }
         }
         return res;
