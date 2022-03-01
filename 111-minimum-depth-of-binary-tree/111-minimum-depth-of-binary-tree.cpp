@@ -14,12 +14,21 @@ public:
     int minDepth(TreeNode* root) {
         if(root == NULL)
             return 0;
-        int left = minDepth(root->left);
-        int right = minDepth(root->right);
-        
-        if(left == NULL || right == NULL)
-            return 1 + left + right;
-        
-        return 1 + min(left, right);
+        int res = 0;
+        queue<TreeNode*> q;
+        q.push(root);
+        while(!q.empty()) {
+            int size = q.size();
+            for(int i = 0; i < size; i++) {
+                TreeNode* n = q.front();
+                q.pop();
+                if(n->left == NULL && n->right == NULL)
+                    return ++res;
+                if(n->left) q.push(n->left);
+                if(n->right) q.push(n->right);
+            }
+            res++;
+        }
+        return res;
     }
 };
