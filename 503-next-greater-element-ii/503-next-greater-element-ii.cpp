@@ -24,6 +24,8 @@ public:
             
             if(!st.empty())
                 res[i] = st.top();
+            else
+                res[i] = -1;
             
             st.push(nums[i]);
         }
