@@ -1,6 +1,7 @@
 class Solution {
 public:
     vector<int> nextGreaterElements(vector<int>& nums) {
+        
         vector<int> res = nums;
         stack<int> st;
         
