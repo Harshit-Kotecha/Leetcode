@@ -9,8 +9,7 @@ public:
                 if(s[i] != pref[j])
                     break;
             }
-            if(j == pref.length())
-                res++;
+            res = j == pref.length() ? ++res : res;
         }
         return res;
     }
