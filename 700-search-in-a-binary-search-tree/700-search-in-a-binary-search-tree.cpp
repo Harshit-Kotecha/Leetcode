@@ -12,14 +12,31 @@
 class Solution {
 public:
     TreeNode* searchBST(TreeNode* root, int val) {
-        if(root == NULL || root->val == val)
+        if(root == NULL)
             return root;
-        if(val < root->val) {
-            root = searchBST(root->left, val);
+        stack<TreeNode*> st;
+        st.push(root);
+        while(!st.empty() || root) {
+            root = st.top();
+            st.pop();
+            if(root->val == val)
+                return root;
+            else if(val < root->val) {
+                if(root->left)
+                    root = root->left;
+                else
+                    return NULL;
+            }
+            else if(val > root->val) {
+                if(root->right)
+                    root = root->right;
+                else
+                    return NULL;
+            }
+            st.push(root);
+                
         }
-        else
-            root = searchBST(root->right, val);
+        return NULL;
         
-        return root;
     }
 };
