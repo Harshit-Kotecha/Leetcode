@@ -116,7 +116,7 @@ class Solution{
         Node* x = NULL;
         while(root) {
             if(root->data > k->data) {
-                if(x == NULL || root->data < x->data) x = root;
+                x = root;
                 root = root->left;
             } 
             else {
