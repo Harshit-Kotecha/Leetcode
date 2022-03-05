@@ -14,29 +14,18 @@ public:
     TreeNode* searchBST(TreeNode* root, int val) {
         if(root == NULL)
             return root;
-        stack<TreeNode*> st;
-        st.push(root);
-        while(!st.empty() || root) {
-            root = st.top();
-            st.pop();
-            if(root->val == val)
-                return root;
-            else if(val < root->val) {
-                if(root->left)
-                    root = root->left;
-                else
-                    return NULL;
+        
+        while(root != NULL && root->val != val) {
+           
+            if(val < root->val) {
+                root = root->left;
             }
-            else if(val > root->val) {
-                if(root->right)
-                    root = root->right;
-                else
-                    return NULL;
+            else {
+                root = root->right;
             }
-            st.push(root);
                 
         }
-        return NULL;
+        return root;
         
     }
 };
