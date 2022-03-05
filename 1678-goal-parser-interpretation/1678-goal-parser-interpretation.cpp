@@ -1,19 +1,20 @@
 class Solution {
 public:
     string interpret(string s) {
-        string res;
+        int k = 0;
         for(int i = 0; i < s.length(); i++) {
             if(s[i] == 'G')
-                res += 'G';
+                s[k++] = 'G';
             else if(s[i] == '(' && s[i+1] == ')') {
-                res += 'o';
+                s[k++] = 'o';
                 i++;
             }
             else {
-                res += "al";
+                s[k++] = 'a';
+                s[k++] = 'l';
                 i += 3;
             }
         }
-        return res;
+        return s.substr(0, k);
     }
 };
