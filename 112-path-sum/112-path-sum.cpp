@@ -14,15 +14,17 @@ public:
     bool hasPathSum(TreeNode* root, int targetSum, int s = 0) {
         if(root == NULL)
             return 0;
+        
         s += root->val;
+        
         if(root->left == NULL && root->right == NULL) {
+            
             if(s == targetSum)
                 return 1;
-            return 0;
+            else
+                return 0;
         }
         
-        // if(s > targetSum)
-        //     return 0;
         
         return hasPathSum(root->left, targetSum, s) || hasPathSum(root->right, targetSum, s);
         
