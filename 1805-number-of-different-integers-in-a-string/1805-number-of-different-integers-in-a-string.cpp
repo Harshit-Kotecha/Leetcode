@@ -1,20 +1,20 @@
 class Solution {
 public:
     int numDifferentIntegers(string s) {
-        set<string> set;
+        unordered_set<string> set;
         for(int i = 0; i < s.length(); i++) {
 
             if(isdigit(s[i])) {
-                string x;
-                while(i < s.length() && isdigit(s[i])) {
-                    if(x.length() == 0 && s[i] == '0') {
-                        i++;
+                int j = i, k = i;
+                while(k < s.length() && isdigit(s[k])) {
+                    if(j == k && s[k] == '0') {
+                        j++;
                         continue;
                     }
-                    x += s[i];
-                    i++;
+                    k++;
                 }
-            set.insert(x);
+                set.insert(s.substr(j, k-j));
+                i = k-1;
             }
             
         }
