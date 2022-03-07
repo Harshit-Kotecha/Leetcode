@@ -15,13 +15,24 @@ public:
         if(root == NULL)
             return root;
         
-        TreeNode* temp = root->left;
-        root->left = root->right;
-        root->right = temp;
-        
-        invertTree(root->left);
-        invertTree(root->right);
-        
+        queue<TreeNode*> q;
+        q.push(root);
+        while(!q.empty()) {
+            int size = q.size();
+            for(int i = 0; i < size; i++) {
+                TreeNode* node = q.front();
+                q.pop();
+                if(node == NULL)
+                    continue;
+                TreeNode* t = node->left;
+                node->left = node->right;
+                node->right = t;
+                
+                q.push(node->left);
+                q.push(node->right);
+                
+            }
+        }
         return root;
     }
 };
