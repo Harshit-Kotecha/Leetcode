@@ -16,7 +16,7 @@ public:
         if(root == NULL)
             return res;
         queue<TreeNode*> q;
-        int zig = -1;
+        bool zig = 0;
         q.push(root);
         while(!q.empty()) {
             int size = q.size();
@@ -28,14 +28,14 @@ public:
                 if(root->left) q.push(root->left);
                 if(root->right) q.push(root->right);
             }
-            if(zig == 1 && level.size() > 1) {
+            if(zig && level.size() > 1) {
                 int i = 0, j = level.size()-1;
                 while(i < j) {
                     swap(level[i++], level[j--]);
                 }
                 
             }
-            zig = -zig;
+            zig = !zig;
             res.push_back(level);
         }
         return res;
