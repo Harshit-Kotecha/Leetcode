@@ -22,7 +22,7 @@ public:
             for(int i = 0; i < size; i++) {
                 TreeNode* node = q.front();
                 q.pop();
-                if(node == NULL)
+                if(node == NULL||(node->left==NULL && node->right==NULL))
                     continue;
                 TreeNode* t = node->left;
                 node->left = node->right;
