@@ -11,28 +11,25 @@
  */
 class Solution {
 public:
-    int m1 =  0, m2 = 0;
-    bool found = false;
-    
     int findSecondMinimumValue(TreeNode* root) {
-        inorder(root);
-        return m2 == 0 ? -1 : m2;
-    }
-    
-    void inorder(TreeNode* root) {
         if(root == NULL)
-            return;
-        inorder(root->left);
-        
-        if(root->val < m1 || m1 == 0) {
-            m2 = m1;
-            m1 = root->val;
-    
+            return 0;
+        long m1 = LONG_MAX, m2 = LONG_MAX;
+        queue<TreeNode*> q;
+        q.push(root);
+        while(!q.empty()) {
+            root = q.front();
+            q.pop();
+            if(root->val < m1) {
+                m2 = m1;
+                m1 = root->val;
+            }
+            else if(root->val != m1 && root->val < m2) {
+                m2 = root->val;
+            }
+            if(root->left) q.push(root->left);
+            if(root->right) q.push(root->right);
         }
-        
-        else if((root->val != m1 && (root->val < m2 || m2 == 0))) {
-            m2 = root->val;
-        }
-        inorder(root->right);
+        return m2 == LONG_MAX ? -1 : m2;
     }
 };
