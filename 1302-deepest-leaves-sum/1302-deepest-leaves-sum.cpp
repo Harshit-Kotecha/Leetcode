@@ -24,11 +24,13 @@ public:
             return ;
         //maxi = max(maxi, ++n);
         n++;
-        if(n > maxi) {
-            sum = root->val;
-            maxi = n;
-        } else if(n == maxi) {
-            sum += root->val;
+        if(root->left == NULL && root->right == NULL) {
+            if(n > maxi) {
+                sum = root->val;
+                maxi = n;
+            } else if(n == maxi) {
+                sum += root->val;
+            }
         }
         dfs(root->left, n);
         dfs(root->right, n);
