@@ -31,6 +31,7 @@ public:
             } else if(n == maxi) {
                 sum += root->val;
             }
+            return;
         }
         dfs(root->left, n);
         dfs(root->right, n);
