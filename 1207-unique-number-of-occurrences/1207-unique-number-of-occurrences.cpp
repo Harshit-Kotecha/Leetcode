@@ -3,10 +3,7 @@ public:
     bool uniqueOccurrences(vector<int>& nums) {
         int cnt[2002] = {0};
         for(int i = 0; i < nums.size(); i++) {
-            if(nums[i] < 0)
-                cnt[1000 + abs(nums[i])]++;
-            else
-                cnt[nums[i]]++;
+            cnt[nums[i] + 1000]++;
         }
         sort(begin(cnt), end(cnt));
         int i = 0;
