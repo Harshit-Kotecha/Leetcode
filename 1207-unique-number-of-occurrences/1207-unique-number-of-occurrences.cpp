@@ -11,8 +11,6 @@ public:
         sort(begin(cnt), end(cnt));
         int i = 0;
         while(cnt[i] == 0) i++;
-        
-        //for(; i < 2002; i++) cout<<cnt[i]<<" ";
         while(i < 2001) {
             if(cnt[i] == cnt[i+1])
                 return 0;
