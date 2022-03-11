@@ -23,7 +23,7 @@ public:
         path += to_string(root->val);
         
         if(root->left == NULL && root->right == NULL) {
-            cout<<path<<" ";
+            //cout<<path<<" ";
             // for(int i = path.length()-1; i >= 0; i--) {
             //     sum += (path[i] - '0') * pow(2, i);
             // }
