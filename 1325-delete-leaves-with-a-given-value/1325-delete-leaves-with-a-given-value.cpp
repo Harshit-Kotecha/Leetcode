@@ -16,13 +16,11 @@ public:
             return root;
         
         bool flag = false;
-        dfs(root, val, flag);
+        root = dfs(root, val, flag);
         
-        while(flag) {
+        while(flag && root) {
             flag = false;
-            if(root->left == NULL && root->right == NULL && root->val == val)
-                return NULL;
-            dfs(root, val, flag);
+            root = dfs(root, val, flag);
         }
         
         return root;
