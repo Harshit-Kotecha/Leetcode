@@ -28,8 +28,8 @@ public:
         for(int i = 0; i < len - k - 1; i++) {
             t = t->next;
         }
-        if(t->next == NULL) 
-            return head;
+        // if(t->next == NULL) 
+        //     return head;
         
         ListNode* newHead = t->next;
         t->next = NULL;
