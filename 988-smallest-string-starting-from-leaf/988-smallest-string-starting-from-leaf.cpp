@@ -11,7 +11,7 @@
  */
 class Solution {
 public:
-    string res;
+    string res = "~";
     string smallestFromLeaf(TreeNode* root) {
         dfs(root, "");
         return res;
@@ -24,24 +24,25 @@ public:
         
         if(root->left == root->right) {
             reverse(path.begin(), path.end());
-            if(res.empty()) {
-                res = path;
-                return;
-            }
-            int i = 0, j = 0;
-            while(i<res.length()&&j<path.length()&&res[i] == path[j]) i++, j++;
+            res = min(res, path);
+//             if(res.empty()) {
+//                 res = path;
+//                 return;
+//             }
+//             int i = 0, j = 0;
+//             while(i<res.length()&&j<path.length()&&res[i] == path[j]) i++, j++;
             
-            if(i == res.length() && j != path.length()) {
-                return;
-            }
-            if(j == path.length() && i < res.length()) {
-                res = path;
-                return;
-            }
-            if(path[j] < res[i]) {
-                res = path;
-                return ;
-            }
+//             if(i == res.length() && j != path.length()) {
+//                 return;
+//             }
+//             if(j == path.length() && i < res.length()) {
+//                 res = path;
+//                 return;
+//             }
+//             if(path[j] < res[i]) {
+//                 res = path;
+//                 return ;
+//             }
             return;
                 
         }
