@@ -4,12 +4,12 @@ public:
         vector<string> res;
         int i = 0;
         for(auto s : words) {
-            unordered_map<char, int> m1, m2;
+            int cnt1[26] = {}, cnt2[26] = {};
             for(i = 0; i < s.length(); i++) {
-                if(m1[s[i]] != m2[p[i]]) {
+                if(cnt1[s[i] - 'a'] != cnt2[p[i] - 'a']) {
                     break;
                 } else {
-                    m1[s[i]] = m2[p[i]] = i + 1;
+                    cnt1[s[i] - 'a'] = cnt2[p[i] - 'a'] = i + 1;
                 }
             }
             if(i == s.length()) {
