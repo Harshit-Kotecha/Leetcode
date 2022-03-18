@@ -14,25 +14,21 @@ public:
     bool isValidBST(TreeNode* root) {
         if(root == NULL) return 1;
         
-        if(checkLeft(root->left, root->val) && checkRight(root->right, root->val)) {
+        // 0 for left, 1 for right
+        if(check(root->left, root->val, 0) && check(root->right, root->val, 1)) {
             return isValidBST(root->left) && isValidBST(root->right);
         }
         
         return 0;
     }
-    bool checkLeft(TreeNode* root, int val) {
+    bool check(TreeNode* root, int val, int x) {
         if(root == NULL)
             return 1;
         
-        if(root->val >= val) return 0;
+        if(x == 0 && root->val >= val) return 0;
         
-        return checkLeft(root->left, val) && checkLeft(root->right, val);
-    }
-    bool checkRight(TreeNode* root, int val) {
-        if(root == NULL) return 1;
+        if(x == 1 && root->val <= val) return 0;
         
-        if(root->val <= val) return 0;
-        
-        return checkRight(root->right, val) && checkRight(root->left, val);
+        return check(root->left, val, x) && check(root->right, val, x);
     }
 };
