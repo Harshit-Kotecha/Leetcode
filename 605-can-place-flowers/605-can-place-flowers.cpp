@@ -11,6 +11,7 @@ public:
                 if(left && right) {
                     n--;
                     f[i] = 1;
+                    i++;
                 }
             }
         }
