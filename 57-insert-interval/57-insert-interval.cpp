@@ -11,14 +11,16 @@ public:
             } else {
                 res.back()[1] = max(res.back()[1], x[1]);
             }
-            if(done == false && res.back()[0] > m[0] && res.back()[0] > m[1]) {
-                res.insert(res.end()-1, m);
-                done = true;
-            }
-            else if(done == false && res.back()[1] >= m[0]) {
-                res.back()[0] = min(res.back()[0], m[0]);
-                res.back()[1] = max(res.back()[1], m[1]);
-                done = true;
+            if(done == false) {
+                if(res.back()[0] > m[0] && res.back()[0] > m[1]) {
+                    res.insert(res.end()-1, m);
+                    done = true;
+                }
+                else if(res.back()[1] >= m[0]) {
+                    res.back()[0] = min(res.back()[0], m[0]);
+                    res.back()[1] = max(res.back()[1], m[1]);
+                    done = true;
+                }
             }
         }
         if(done == false) {
