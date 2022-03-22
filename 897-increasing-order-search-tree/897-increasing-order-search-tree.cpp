@@ -11,20 +11,22 @@
  */
 class Solution {
 public:
+    TreeNode* curr;
     TreeNode* increasingBST(TreeNode* root) {
-        vector<int> res;
-        dfs(root, res);
         TreeNode* dmy = new TreeNode(0);
-        TreeNode* curr = dmy;
-        for(int x : res) {
-            curr = curr->right = new TreeNode(x);
-        }
+        curr = dmy;
+        dfs(root);
         return dmy->right;
     }
-    void dfs(TreeNode* root, vector<int>& res) {
-        if(root == NULL) return;
-        dfs(root->left, res);
-        res.push_back(root->val);
-        dfs(root->right, res);
+    void dfs(TreeNode* root) {
+        if(root == NULL) 
+            return;
+        
+        dfs(root->left);
+        
+        curr->right = root;
+        curr = curr->right;
+        curr->left = NULL;
+        dfs(root->right);
     }
 };
