@@ -13,20 +13,18 @@ class Solution {
 public:
     int res = 0, maxi = -1;
     int findBottomLeftValue(TreeNode* root) {
-        res = root->val;
-        dfs(root, 0, 1);
-        //if(maxi == -1 && root->right != NULL) return root->right->val; 
+        dfs(root, 0);
         return res;
     }
-    void dfs(TreeNode* root, int lev, int left) {
+    void dfs(TreeNode* root, int lev) {
         if(root == NULL) return;
         
-        if(left && lev > maxi) {
+        if(lev > maxi) {
             maxi = lev;
             res = root->val;
         } 
         
-        dfs(root->left, lev+1, 1);
-        dfs(root->right, lev+1, 1);
+        dfs(root->left, lev+1);
+        dfs(root->right, lev+1);
     }
 };
