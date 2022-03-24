@@ -7,30 +7,32 @@
  *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
  *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
- * };
+ * }; if(prev == -1 && root->val & 1 || (prev != -1 && root->val >))
  */
 class Solution {
 public:
-    vector<int> res;
-    bool isEvenOddTree(TreeNode* root, int lev = 0) {
+    bool isEvenOddTree(TreeNode* root) {
         if(root == NULL) return 1;
         
-        if(res.size() < lev+1) {
-            if(lev & 1) {
-                if(root->val & 1) return 0;
-            } else if(root->val % 2 == 0) return 0;
-            
-            res.push_back(root->val);
-        } else {
-            if(lev & 1) {
-                if(root->val & 1 || root->val >= res[lev]) return 0;
-                else res[lev] = root->val;
-            } else {
-                if(root->val % 2 == 0 || root->val <= res[lev]) return 0;
-                else res[lev] = root->val;
+        queue<TreeNode*> q;
+        q.push(root);
+        int lev = 0;
+        while(!q.empty()) {
+            int prev = -1;
+            for(int i = 0, s = q.size(); i < s; i++) {
+                root = q.front(); 
+                q.pop();
+                if(lev & 1) {
+                    if(root->val & 1 || (prev != -1&&root->val >= prev))return 0;
+                } else {
+                    if(root->val % 2 == 0||(prev!=-1&&root->val<= prev)) return 0;
+                }
+                prev = root->val;
+                if(root->left) q.push(root->left);
+                if(root->right) q.push(root->right);
             }
+            lev++;
         }
-        
-        return isEvenOddTree(root->left, lev+1) && isEvenOddTree(root->right, lev+1);
+        return 1;
     }
 };
