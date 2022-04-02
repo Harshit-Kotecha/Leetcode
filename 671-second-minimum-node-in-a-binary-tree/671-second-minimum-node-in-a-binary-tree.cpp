@@ -11,25 +11,25 @@
  */
 class Solution {
 public:
+    int m1 = -1, m2 = -1;
+    
     int findSecondMinimumValue(TreeNode* root) {
+        dfs(root); cout<<m2;
+        return m2;
+    }
+    
+    void dfs(TreeNode* root) {
         if(root == NULL)
-            return 0;
-        long m1 = LONG_MAX, m2 = LONG_MAX;
-        queue<TreeNode*> q;
-        q.push(root);
-        while(!q.empty()) {
-            root = q.front();
-            q.pop();
-            if(root->val < m1) {
-                m2 = m1;
-                m1 = root->val;
-            }
-            else if(root->val != m1 && root->val < m2) {
-                m2 = root->val;
-            }
-            if(root->left) q.push(root->left);
-            if(root->right) q.push(root->right);
+            return;
+        //cout<<"HERE";
+        if(m1 == -1 || root->val < m1) {
+            m2 = m1;
+            m1 = root->val; //cout<<m1;
+        } else if (root->val != m1 && (root->val < m2 || m2 == -1)) {
+            m2 = root->val; //cout<<m2;
         }
-        return m2 == LONG_MAX ? -1 : m2;
+        
+        dfs(root->left);
+        dfs(root->right);
     }
 };
