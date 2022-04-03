@@ -98,17 +98,22 @@ class Solution
     bool isSumTree(Node* root)
     {
          // Your code here
-         if(root == NULL) return 1;
-         bool check = false;
-         
-         if(root->left == root->right) check = true;
-         else if(sum(root->left) + sum(root->right) == root->data) check = true;
-         
-        return check && isSumTree(root->left) && isSumTree(root->right);         
+         return sum(root) >= 0;
     }
     int sum(Node* root) {
         if(root == NULL) return 0;
-        return root->data + sum(root->left) + sum(root->right);
+        
+        int l = sum(root->left);
+        if(l < 0 || l > root->data) return INT_MIN;
+        
+        int r = sum(root->right);
+        if(r < 0 || r > root->data) return INT_MIN;
+        
+        if(l + r == 0 || l + r == root->data) {
+            return l + r + root->data;
+        } else {
+            return INT_MIN;
+        }
     }
 };
 
