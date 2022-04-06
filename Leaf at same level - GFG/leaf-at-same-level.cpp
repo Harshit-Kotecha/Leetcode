@@ -99,25 +99,21 @@ struct Node
 class Solution{
   public:
     /*You are required to complete this method*/
-    bool check(Node *root)
+    int leaf = 0;
+    bool check(Node *root, int l = 0)
     {
         //Your code here
         if(root == NULL) return 1;
-        int leaf = 0;
-        queue<Node*> q;
-        q.push(root);
-        while(!q.empty()) {
-            for(int i = 0, s = q.size(); i < s; i++) {
-                root = q.front();
-                q.pop();
-                if(root->left == root->right) leaf = 1;
-                if(root->left) q.push(root->left);
-                if(root->right) q.push(root->right);
-            }
-            if(leaf) {
-                return q.empty();
+        bool flag = true;
+        if(root->left == root->right) {
+            if(leaf != 0 && leaf != l) {
+                flag = false;
+            } else {
+                leaf = l;
             }
         }
+        
+        return flag && check(root->left, l+1) && check(root->right, l+1);
     }
 };
 
