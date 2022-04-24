@@ -11,7 +11,7 @@ public:
                     hi = i - 1;
                 else
                     return i;
-            } else if(i == 0 && a[i+1] > a[i]) {
+            } else if(i == 0) {
                 return i + 1;
             } else {
                 return i - 1;
