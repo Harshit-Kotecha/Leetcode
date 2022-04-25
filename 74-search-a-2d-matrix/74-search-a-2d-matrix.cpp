@@ -1,7 +1,7 @@
 class Solution {
 public:
     bool searchMatrix(vector<vector<int>>& mat, int t) {
-        for(auto x : mat) {
+        for(auto& x : mat) {
             if(t > x.back()) continue;
             int lo = 0, hi = x.size() - 1, mid;
             while(lo <= hi) {
