@@ -10,12 +10,12 @@ public:
             
             if(j < 0 || k >= nums.size()) continue;
             
-            if(nums[i] > nums[j] && nums[i] > nums[k] && i-1 != hill) {
-                hill = i; cout<<hill<<" ";
+            if(nums[i] > nums[j] && nums[i] > nums[k]) {
+                //hill = i; cout<<hill<<" ";
                 res++;
             }
-            else if(nums[i] < nums[j] && nums[i] < nums[k] && i-1 != val) {
-                val = i; cout<<val<<" ";
+            else if(nums[i] < nums[j] && nums[i] < nums[k]) {
+                // val = i; cout<<val<<" ";
                 res++;
             }
             
