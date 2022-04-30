@@ -1,17 +1,12 @@
 class Solution {
 public:
     vector<int> intersection(vector<vector<int>>& nums) {
-        unordered_map<int, int> m;
-        for(auto& x : nums) {
-            for(int i : x)
-                m[i] += i;
-        }
         vector<int> res;
-        for(auto& i : m) {
-            if(i.first * nums.size() == i.second)
-                res.push_back(i.first);
-        }
-        sort(res.begin(), res.end());
+        int cnt[1001] = {0};
+        for(auto& x : nums)
+            for(int i : x) cnt[i]++;
+        for(int i = 1; i < 1001; i++)
+            if(cnt[i] == nums.size()) res.push_back(i);
         return res;
     }
 };
