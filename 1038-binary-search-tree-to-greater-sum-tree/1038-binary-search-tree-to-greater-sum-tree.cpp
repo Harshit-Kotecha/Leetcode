@@ -22,8 +22,7 @@ public:
         if(n == NULL) return;
         
         dfs(n->right);
-        cnt += n->val;
-        n->val = cnt;
+        n->val = cnt += n->val;
         dfs(n->left);
     }
 };
