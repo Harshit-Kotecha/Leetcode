@@ -1,13 +1,13 @@
 class Solution {
 public:
     int countNegatives(vector<vector<int>>& g) {
-        int m = g.size(), n = g[0].size(), r = 0, c = n-1, res = 0;
-        while(r < m && c >= 0) {
+        int m = g.size(), n = g[0].size(), r = m-1, c = 0, res = 0;
+        while(r >= 0 && c < n) {
             if(g[r][c] < 0) {
-                res += m - r;
-                c--;
+                res += n - c;
+                r--;
             } else {
-                r++;
+                c++;
             }
         }
         return res;
