@@ -1,8 +1,8 @@
 class Solution {
 public:
     int smallestDivisor(vector<int>& nums, int t) {
-        sort(nums.begin(), nums.end());
-        int lo = 1, hi = nums.back(), mid;
+        //sort(nums.begin(), nums.end());
+        int lo = 1, hi = *max_element(nums.begin(), nums.end()), mid;
         while(lo < hi) {
             mid = lo + (hi - lo) / 2;
             int s = 0;// cout<<mid<<" ";
