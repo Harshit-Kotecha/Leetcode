@@ -9,12 +9,12 @@ public:
     }
     
     int pick(int t) {
-        vector<int> v = m[t];
-        int lo = 0, hi = v.size() - 1;
-        // for(int i : v) cout<<i<<" ";
-        // if(hi == lo) return v[lo];
+        // vector<int> v = m[t];
+        // int r = m[t].size() - 1; cout<<r<<" ";
+        int lo = 0, hi = m[t].size() - 1;
         int x = (rand() % (hi - lo + 1)) + lo;
-        return v[x];
+        return m[t][x];
+        // return v[x];
         
     }
 };
