@@ -21,15 +21,7 @@ public:
                 list2 = list2->next;
             }
         }
-        while(list1) {
-            t = t->next =list1;
-            list1 = list1->next;
-        }
-        while(list2) {
-            t = t->next = list2;
-            list2 = list2->next;
-        }
-        t->next = NULL;
+        t->next = list1 != NULL ? list1 : list2;
         return nh->next;
     }
 };
