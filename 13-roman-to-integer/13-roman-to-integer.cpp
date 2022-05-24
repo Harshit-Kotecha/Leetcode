@@ -13,13 +13,14 @@ public:
         };
         
         for(int i = 0; i < s.length(); i++) {
-            if(i+1 < s.length()) {
+            cout<<m[s[i+1]]<<" ";
+            // if(i+1 < s.length()) {
                 if(m[s[i+1]] - m[s[i]] > 0) {
                     res += m[s[i+1]] - m[s[i]];
                     i++;
                     continue;
                 }
-            }
+            // }
             res += m[s[i]];
         }
         return res;
