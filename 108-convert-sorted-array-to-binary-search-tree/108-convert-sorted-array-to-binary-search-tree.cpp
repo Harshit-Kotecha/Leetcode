@@ -14,14 +14,13 @@ public:
     TreeNode* sortedArrayToBST(vector<int>& nums) {
         return bst(nums, 0, nums.size() - 1);
     }
-    TreeNode* bst(vector<int> nums, int lo, int hi) {
-        if(lo <= hi) {
-            int mid = (lo + hi) / 2;
-            TreeNode* root = new TreeNode(nums[mid]);
-            root->left = bst(nums, lo, mid - 1);
-            root->right = bst(nums, mid + 1, hi);
-            return root;
-        }
-        return {};
+    TreeNode* bst(vector<int>& nums, int lo, int hi) {
+        if(lo > hi) return {};
+        
+        int m = lo + (hi - lo) / 2;
+        TreeNode* root = new TreeNode(nums[m]);
+        root->left = bst(nums, lo, m-1);
+        root->right = bst(nums, m+1, hi);
+        return root;
     }
 };
