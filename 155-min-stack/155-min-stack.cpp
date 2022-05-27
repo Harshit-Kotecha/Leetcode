@@ -1,24 +1,42 @@
+class Node {
+public:
+    int mini;
+    int val;
+    Node *next;
+    
+    Node(int mini, int val, Node *next) {
+        this->mini = mini;
+        this->val = val;
+        this->next = next;
+    }
+};
+
 class MinStack {
 public:
-    vector<int> v;
+    Node *head = NULL;
+
     MinStack() {
-        
     }
     
     void push(int val) {
-        v.push_back(val);
+        if(head == NULL) {
+            head = new Node(val, val, NULL);
+        } else {
+            int mini = min(val, head->mini);
+            head = new Node(mini, val, head);
+        }
     }
     
     void pop() {
-        v.pop_back();
+        head = head->next;
     }
     
     int top() {
-        return v.back();
+        return head->val;
     }
     
     int getMin() {
-        return *min_element(v.begin(), v.end());
+        return head->mini;
     }
 };
 
