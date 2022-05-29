@@ -14,9 +14,9 @@ public:
                     break;
                 }
             }
-            for(int i = 0; i < 26 && flag; i++) {
-                if(c[i] > cnt[i]) flag = false;
-            }
+            // for(int i = 0; i < 26 && flag; i++) {
+            //     if(c[i] > cnt[i]) flag = false;
+            // }
             if(flag) res += s.length();
         }
         return res;
