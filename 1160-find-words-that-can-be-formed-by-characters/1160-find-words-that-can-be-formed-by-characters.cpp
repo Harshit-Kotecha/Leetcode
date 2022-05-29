@@ -7,10 +7,13 @@ public:
         int res = 0;
         for(auto& s : words) {
             int c[26] = {};
-            for(char ch : s) {
-                c[ch - 'a']++;
-            }
             bool flag = true;
+            for(char ch : s) {
+                if(++c[ch - 'a'] > cnt[ch - 'a']) {
+                    flag = false;
+                    break;
+                }
+            }
             for(int i = 0; i < 26 && flag; i++) {
                 if(c[i] > cnt[i]) flag = false;
             }
