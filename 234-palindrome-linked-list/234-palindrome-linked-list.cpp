@@ -17,8 +17,25 @@ public:
             slow = slow->next;
             fast = fast->next->next;
         }
-        p->next = NULL;
+        // p->next = NULL;
         if(fast) slow = slow->next;
+        slow = rev(slow);
+        ListNode *t = slow, *c = head;
+        bool flag = true;
+        while(t) {
+            if(head->val != t->val) {
+                flag = false;
+                break;
+            }
+            head = head->next;
+            t = t->next;
+        }
+        slow = rev(slow);
+        p->next = slow;
+        while(c) {cout<<c->val<<" "; c = c->next;}
+        return flag;
+    }
+    ListNode *rev(ListNode *slow) {
         ListNode *n, *t = NULL;
         while(slow) {
             n = slow->next;
@@ -26,11 +43,6 @@ public:
             t = slow;
             slow = n;
         }
-        while(head && t) {
-            if(head->val != t->val) return 0;
-            head = head->next;
-            t = t->next;
-        }
-        return 1;
+        return t;
     }
 };
