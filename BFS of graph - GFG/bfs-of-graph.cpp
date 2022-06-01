@@ -16,14 +16,14 @@ class Solution {
         while(!q.empty()) {
             int n = q.front();
             q.pop();
-            if(vis[n] == false) {
+            // if(vis[n] == false) {
                 res.push_back(n);
                 vis[n] = true;
-            }
+            // }
                 for(int i : adj[n]) {
                     if(vis[i] == false) {
                         q.push(i);
-                        res.push_back(i);
+                        //res.push_back(i);
                         vis[i] = true;
                     }
                 }
