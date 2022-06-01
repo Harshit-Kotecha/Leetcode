@@ -18,7 +18,7 @@ class Solution {
             q.pop();
             // if(vis[n] == false) {
                 res.push_back(n);
-                vis[n] = true;
+                //vis[n] = true;
             // }
                 for(int i : adj[n]) {
                     if(vis[i] == false) {
