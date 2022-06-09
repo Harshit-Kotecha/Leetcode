@@ -21,6 +21,7 @@ public:
                     vis[i] = 1;
                 }
             }
+            if(vis[d] == 1) return 1;
         }
         return vis[d];
     }
