@@ -10,15 +10,11 @@ public:
             m[j].push_back(i);
         }
         vector<int> res;
-        while(k > 0) {
-            for(auto& i : s) {
-                if(k <= 0) break;
-                // int s = m[i].size();
-                for(int j : m[i]) {
-                    if(k-- <= 0) break;
-                    res.push_back(j);
-                }
-                // k -= s;
+        for(auto& i : s) {
+            //if(k <= 0) break;
+            for(int j : m[i]) {
+                if(k-- <= 0) break;
+                res.push_back(j);
             }
         }
         return res;
