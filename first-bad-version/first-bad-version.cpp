@@ -8,11 +8,11 @@ public:
         while(lo < hi) {
             mid = lo + (hi - lo) / 2;
             if(isBadVersion(mid)) {
-                hi = mid - 1;
+                hi = mid;
             } else {
                 lo = mid + 1;
             }
         }
-        return isBadVersion(lo) ? lo : lo + 1;
+        return lo;
     }
 };
