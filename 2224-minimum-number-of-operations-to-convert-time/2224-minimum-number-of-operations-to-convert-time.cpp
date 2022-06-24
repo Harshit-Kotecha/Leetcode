@@ -6,13 +6,11 @@ public:
         
         int d = y - x; cout<< d;
         int res = 0;
-        res += d / 60;
-        d %= 60;
-        res += d / 15;
-        d %= 15;
-        res += d / 5;
-        d %= 5;
-        res += d;
+        int div[4] = {60, 15, 5, 1};
+        for(int i = 0; i < 4 && d > 0; i++) {
+            res += d / div[i];
+            d %= div[i];
+        }
         return res;
     }
 };
