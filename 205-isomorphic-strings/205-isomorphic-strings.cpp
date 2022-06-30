@@ -2,21 +2,20 @@ class Solution {
 public:
     bool isIsomorphic(string s, string t) {
         if(s.length() != t.length()) return 0;
-        
-        return transform(s) == transform(t);
-    }
-    string transform(string s) {
-        vector<int> cnt(256, -1);
-        string res; 
+        vector<int> c1(256, -1), c2(256, -1);
+        int k1 = -1, k2 = -1; 
         for(int i = 0; i < s.length(); i++) {
             
-            if(cnt[s[i]] == -1) {
-                res += to_string(i) + ' ';
-                cnt[s[i]] = i;
-            } else {
-                res += to_string(cnt[s[i]]) + ' ';
-            }
+            if(c1[s[i]] == -1) {
+                c1[s[i]] = i;
+            } 
+            if(c2[t[i]] == -1) {
+                c2[t[i]] = i;
+            } 
+            if(c1[s[i]] != c2[t[i]]) return 0;
         }
-        return res;
+        return 1;
     }
+    
+    
 };
