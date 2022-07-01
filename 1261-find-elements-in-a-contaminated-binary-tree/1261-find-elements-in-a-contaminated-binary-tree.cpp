@@ -12,9 +12,11 @@
 class FindElements {
 public:
     TreeNode* root = NULL;
-    FindElements(TreeNode* root1) {
-        root = root1;
+    set<int> s;
+    FindElements(TreeNode* root) {
+        this->root = root;
         if(root != NULL) {
+            s.insert(0);
             root->val = 0;
             dfs(root);
         }
@@ -22,35 +24,15 @@ public:
     void dfs(TreeNode* root) {
         if(root == NULL) return ;
         
-        if(root->left) root->left->val = (2 * root->val) + 1;
-        if(root->right) root->right->val = (2 * root->val) + 2;
+        if(root->left) {root->left->val = (2 * root->val) + 1; s.insert((2*root->val) + 1);}
+        if(root->right) {root->right->val = (2 * root->val) + 2; s.insert((2*root->val) + 2);}
         
         dfs(root->left);
         dfs(root->right);
     }
     bool find(int t) {
-        if(root == NULL) return 0;
-        queue<TreeNode*> q;
-        q.push(root);
-        while(!q.empty()) {
-            for(int i = 0, s = q.size(); i < s; i++) {
-                TreeNode *n = q.front();
-                q.pop();
-                if(t == n->val) return 1;
-                if(t < n->val) {
-                    while(!q.empty()) {
-                        n = q.front();
-                        q.pop();
-                        if(t == n->val) return 1;
-                    }
-                    return 0;
-                } else {
-                    if(n->left) q.push(n->left);
-                    if(n->right) q.push(n->right);
-                }
-            }
-        }
-        return 0;
+        
+        return s.find(t) != s.end();
     }
 };
 
