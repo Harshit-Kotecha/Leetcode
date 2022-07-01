@@ -12,7 +12,6 @@ public:
     }
     
     string get(string key, int t) {
-        //vector<int> v = m1[key];
         if(m1.find(key) == m1.end()) return "";
         
         
@@ -20,8 +19,7 @@ public:
         while(it != m1[key].rend() && *it > t) {
             it++;
         }
-        if(it == m1[key].rend()) return "";
-        return m2[*it];
+        return it == m1[key].rend() ? "" : m2[*it];
         
     }
 };
