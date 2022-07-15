@@ -98,28 +98,19 @@ class Solution
 {
   public:
     //Function to check if S is a subtree of tree T.
-    bool rs = false, flag = false;
+    
     bool check(Node* p, Node* q) {
         if(p == NULL || q == NULL) return p == q;
         
         return p->data == q->data && check(p->left, q->left) && check(p->right, q->right);
     }
-    void dfs(Node* t, Node* s) {
-        if(t == NULL || rs == 1) return ;
-        if(t->data == s->data) {
-            //flag = 1;
-            rs = check(t, s);
-            // return;
-        }
-        dfs(t->left, s);
-        dfs(t->right, s);
-    }
-    bool isSubTree(Node* T, Node* S) 
+    bool isSubTree(Node* t, Node* s) 
     {
         // Your code here
-        rs = flag = 0;
-        dfs(T, S);
-        return rs;
+        if(t == NULL) return 0;
+        if(t->data == s->data && check(t, s)) return 1;
+        
+        return isSubTree(t->left, s) || isSubTree(t->right, s);
     }
 };
 
