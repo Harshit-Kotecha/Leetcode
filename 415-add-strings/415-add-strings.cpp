@@ -5,18 +5,14 @@ public:
         
         int i = num1.length() - 1, j = num2.length() - 1, s = 0;
             
-        while(j >= 0) {
-            s += num1[i] - '0' + num2[j] - '0';
+        while(i >= 0) {
+            s += num1[i] - '0';
+            if(j >= 0) s += num2[j] - '0';
             num1[i] = (s % 10) + '0';
             s /= 10;
             i--, j--;
         }
-        while(i >= 0 && s) {
-            s += num1[i] - '0';
-            num1[i] = (s % 10) + '0';
-            s /= 10;
-            i--;
-        }
+        
         if(s) return to_string(s) + num1;
         return num1;
     }
