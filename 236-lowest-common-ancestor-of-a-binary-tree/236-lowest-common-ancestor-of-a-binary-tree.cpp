@@ -9,24 +9,24 @@
  */
 class Solution {
 public:
-    TreeNode* rs = NULL;
+    TreeNode *rs = NULL;
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
         lca(root, p, q);
         return rs;
     }
     bool lca(TreeNode* root, TreeNode* p, TreeNode* q) {
-        if(root == NULL || rs != NULL) return 0;
+        if(root == NULL) return 0;
         
         bool left = lca(root->left, p, q);
         bool right = lca(root->right, p, q);
-        bool mid = 0;
-        if(root == p || root == q) mid = 1;
         
-        if(left + right + mid >= 2) {
+        bool m = root == p || root == q ? 1 : 0;
+        
+        if(left + right + m >= 2) {
             rs = root;
             return 1;
         }
         
-        return mid || left || right;
+        return left || right || m;
     }
 };
