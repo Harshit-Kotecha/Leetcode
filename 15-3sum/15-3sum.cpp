@@ -3,7 +3,8 @@ public:
     vector<vector<int>> threeSum(vector<int>& nums) {
         sort(nums.begin(), nums.end());
         vector<vector<int>> rs;
-        for(int i = 0, n = nums.size(); i+1 < n; i++) {
+        if(nums.back() < 0) return {};
+        for(int i = 0, n = nums.size(); i+2 < n && nums[i] <= 0; i++) {
             int lo = i+1, hi = n - 1;
             while(lo < hi) {
                 if((nums[lo] + nums[hi]) == -nums[i]) {
