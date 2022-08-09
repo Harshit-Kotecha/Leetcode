@@ -18,19 +18,14 @@ public:
     bool lca(TreeNode* root, TreeNode* p, TreeNode* q) {
         if(root == NULL || rs != NULL) return 0;
         
-        bool left = 0, right = 0;
-        if(p->val < root->val || q->val < root->val) {
-            left = lca(root->left, p, q);
-        } 
-        if(p->val > root->val || q->val > root->val) {
-            right = lca(root->right, p, q);
-        }
-        bool mid = root == p || root == q ? 1 : 0;
+        bool l = lca(root->left, p, q);
+        bool r = lca(root->right, p, q);
+        bool m = root == p || root == q;
         
-        if(left + right + mid >= 2) {
+        if(l + m + r >= 2) {
             rs = root;
             return 1;
         }
-        return left || right || mid;
-    }
+        return l + r + m;
+    } 
 };
